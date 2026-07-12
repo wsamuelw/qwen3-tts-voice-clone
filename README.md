@@ -7,6 +7,7 @@ High-quality voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qw
 ## Features
 
 - **Zero-shot voice cloning** — no fine-tuning required. A single 10-second reference audio is enough
+- **Auto-transcription** — uses Qwen3-ASR to transcribe the reference audio automatically, ensuring accurate speaker embedding alignment
 - **Multilingual** — supports Chinese and English speech generation
 - **Low resource** — runs on a single T4 GPU in Google Colab (free tier)
 - **Fast inference** — generates speech in seconds, not minutes
@@ -14,9 +15,9 @@ High-quality voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qw
 ## How It Works
 
 ```
-Reference Audio (10s) ──┐
-                        ├──▶ Qwen3-TTS ──▶ Cloned Speech
-Text to Speak ──────────┘
+Reference Audio (10s) ──▶ Qwen3-ASR ──▶ ref_text ──┐
+                                                    ├──▶ Qwen3-TTS ──▶ Cloned Speech
+Text to Speak ──────────────────────────────────────┘
 ```
 
 The model analyses the timbre, pitch, and prosody of the reference audio, then synthesises new speech that preserves those characteristics while speaking your input text.
