@@ -1,6 +1,4 @@
-qwen-tts
-qwen-asr
-transformers
+transformers==4.57.3
 accelerate
 torchaudio
 soundfile
@@ -8,6 +6,5 @@ librosa
 sox
 onnxruntime
 einops
-qwen-omni-utils
-nagisa
-soynlp
+qwen-tts
+qwen-asr
