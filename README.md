@@ -8,7 +8,7 @@ High-quality voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qw
 
 - **Zero-shot voice cloning** — no fine-tuning required. A single 10-second reference audio is enough
 - **Auto-transcription** — uses Qwen3-ASR to transcribe the reference audio automatically, ensuring accurate speaker embedding alignment
-- **Multilingual** — supports Chinese and English speech generation
+- **Multilingual** — supports 10 languages: Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, and Italian
 - **Low resource** — runs on a single T4 GPU in Google Colab (free tier)
 - **Fast inference** — generates speech in seconds, not minutes
 
@@ -30,8 +30,9 @@ The fastest way to try it — zero setup required.
 
 1. Click **Open in Colab** above
 2. Run all cells
-3. Upload a reference audio file when prompted
-4. Download your cloned voice
+3. Choose your model and enter the text you want the cloned voice to say
+4. Upload a reference audio file when prompted
+5. Download your cloned voice
 
 
 ## Use Cases
@@ -72,8 +73,8 @@ Voice cloning technology sits at the intersection of convenience and responsibil
 | Model | `Qwen/Qwen3-TTS-12Hz-1.7B-Base` |
 | Parameters | 1.7B |
 | Sample Rate | 24kHz |
-| Languages | Chinese, English |
-| Reference Audio | ~10 seconds recommended |
+| Languages | Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, Italian |
+| Reference Audio | 3–10 seconds recommended |
 | GPU Memory | ~4GB (bf16) |
 
 Smaller variant also available: `Qwen/Qwen3-TTS-12Hz-0.6B-Base` (fewer parameters, faster inference).
