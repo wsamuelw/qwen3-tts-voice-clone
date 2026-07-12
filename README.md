@@ -2,7 +2,7 @@
 
 High-quality voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base). Upload a reference audio sample, and this project generates speech that mimics the speaker's voice characteristics — in Chinese or English.
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Y6u-ZJLuOKeYTUdQkM5KJFM58ZEn1dM-#scrollTo=sBvrqgXPXlTf)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wsamuelw/qwen3-tts-voice-clone/blob/main/qwen3-tts-voice-clone.ipynb)
 
 ## Features
 
