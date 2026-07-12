@@ -82,7 +82,7 @@ Smaller variant also available: `Qwen/Qwen3-TTS-12Hz-0.6B-Base` (fewer parameter
 
 ```
 qwen3-tts-voice-clone/
-├── google-colab.ipynb   # Full working notebook (recommended starting point)
+├── qwen3-tts-voice-clone.ipynb   # Full working notebook (recommended starting point)
 ├── README.md
 └── .gitignore
 ```
