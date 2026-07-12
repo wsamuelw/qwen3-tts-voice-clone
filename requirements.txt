@@ -4,3 +4,4 @@ librosa
 soundfile
 transformers
 accelerate
+sox
