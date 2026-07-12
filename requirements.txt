@@ -1,10 +1,2 @@
-transformers==4.57.3
-accelerate
-torchaudio
-soundfile
-librosa
-sox
-onnxruntime
-einops
 qwen-tts
 qwen-asr
