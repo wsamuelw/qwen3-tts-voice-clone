@@ -1,6 +1,6 @@
 qwen-tts
 qwen-asr
-transformers
+transformers>=4.57.4,<5.0.0
 accelerate
 torchaudio
 soundfile
