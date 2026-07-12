@@ -1,6 +1,6 @@
 qwen-tts
 qwen-asr
-transformers==4.51.3
+transformers
 accelerate
 torchaudio
 soundfile
@@ -9,5 +9,5 @@ sox
 onnxruntime
 einops
 qwen-omni-utils
-nagisa==0.2.11
+nagisa
 soynlp
