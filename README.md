@@ -32,16 +32,6 @@ The fastest way to try it — zero setup required.
 3. Upload a reference audio file when prompted
 4. Download your cloned voice
 
-### Local Setup
-
-```bash
-git clone https://github.com/wsamuelw/qwen3-tts-voice-clone.git
-cd qwen3-tts-voice-clone
-pip install qwen-tts soundfile transformers accelerate
-python clone.py --reference-audio voice.wav --text "Hello world"
-```
-
-**Requirements:** Python 3.10+, NVIDIA GPU with 8GB+ VRAM (CUDA)
 
 ## Use Cases
 
