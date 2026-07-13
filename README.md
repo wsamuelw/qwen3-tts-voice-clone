@@ -1,8 +1,11 @@
 # Qwen3-TTS Voice Clone
 
-Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base). Upload a short reference audio sample, and this project generates speech that mimics the speaker's voice characteristics.
-
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wsamuelw/qwen3-tts-voice-clone/blob/main/qwen3-tts-voice-clone.ipynb)
+![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![GPU](https://img.shields.io/badge/GPU-T4+-orange.svg)
+
+Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base). Upload a short reference audio sample, and this project generates speech that mimics the speaker's voice characteristics.
 
 ## Use Cases
 
