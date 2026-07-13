@@ -20,7 +20,7 @@ Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-
 - **Zero-shot voice cloning** — no fine-tuning required. A single 3-second reference audio is enough
 - **Auto-transcription** — uses [Qwen3-ASR](https://huggingface.co/Qwen/Qwen3-ASR-0.6B) to transcribe the reference audio automatically, ensuring accurate speaker embedding alignment
 - **Multilingual** — the model supports 10 languages: Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, and Italian. The notebook auto-detects Chinese or English from your input text
-- **Low resource** — runs on a single T4 GPU in Google Colab (free tier). CPU inference is possible but significantly slower
+- **Low resource** — runs on a single T4 GPU in Google Colab (free tier)
 - **Fast inference** — typically under 5 seconds for short text on T4
 - **WAV output** — 24kHz sample rate
 
