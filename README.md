@@ -4,6 +4,14 @@ Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wsamuelw/qwen3-tts-voice-clone/blob/main/qwen3-tts-voice-clone.ipynb)
 
+## Use Cases
+
+- **Content creation** — dub videos, podcasts, and audiobooks with a consistent voice
+- **Education** — generate language learning materials with natural pronunciation
+- **Entertainment** — character voice consistency across games and animations
+- **Accessibility** — restore speech for people who have lost their voice (requires prior recording)
+- **Archival** — preserve endangered languages and historical voices
+
 ## Features
 
 - **Zero-shot voice cloning** — no fine-tuning required. A single 3-second reference audio is enough
@@ -57,14 +65,6 @@ For best results, your reference audio should be:
 - **Single speaker** — multiple speakers will confuse the model
 - **Normal pace** — not too fast, not too slow
 - **Clear pronunciation** — mumbling or whispering degrades quality
-
-## Use Cases
-
-- **Content creation** — dub videos, podcasts, and audiobooks with a consistent voice
-- **Education** — generate language learning materials with natural pronunciation
-- **Entertainment** — character voice consistency across games and animations
-- **Accessibility** — restore speech for people who have lost their voice (requires prior recording)
-- **Archival** — preserve endangered languages and historical voices
 
 ## Model Details
 
