@@ -1,23 +1,24 @@
 # Qwen3-TTS Voice Clone
 
-High-quality voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base). Upload a reference audio sample, and this project generates speech that mimics the speaker's voice characteristics — in Chinese or English.
+Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base). Upload a short reference audio sample, and this project generates speech that mimics the speaker's voice characteristics.
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wsamuelw/qwen3-tts-voice-clone/blob/main/qwen3-tts-voice-clone.ipynb)
 
 ## Features
 
-- **Zero-shot voice cloning** — no fine-tuning required. A single 10-second reference audio is enough
-- **Auto-transcription** — uses Qwen3-ASR to transcribe the reference audio automatically, ensuring accurate speaker embedding alignment
-- **Multilingual** — supports 10 languages: Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, and Italian
-- **Low resource** — runs on a single T4 GPU in Google Colab (free tier)
-- **Fast inference** — generates speech in seconds, not minutes
+- **Zero-shot voice cloning** — no fine-tuning required. A single 3-second reference audio is enough
+- **Auto-transcription** — uses [Qwen3-ASR](https://huggingface.co/Qwen/Qwen3-ASR-0.6B) to transcribe the reference audio automatically, ensuring accurate speaker embedding alignment
+- **Multilingual** — the model supports 10 languages: Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, and Italian. The notebook auto-detects Chinese or English from your input text
+- **Low resource** — runs on a single T4 GPU in Google Colab (free tier). CPU inference is possible but significantly slower
+- **Fast inference** — typically under 5 seconds for short text on T4
+- **WAV output** — 24kHz sample rate
 
 ## How It Works
 
 ```
-Reference Audio (10s) ──▶ Qwen3-ASR ──▶ ref_text ──┐
-                                                    ├──▶ Qwen3-TTS ──▶ Cloned Speech
-Text to Speak ──────────────────────────────────────┘
+Reference Audio (3-10s) ──▶ Qwen3-ASR ──▶ ref_text ──┐
+                                                      ├──▶ Qwen3-TTS ──▶ Cloned Speech
+Text to Speak ──▶ Language Detection ─────────────────┘
 ```
 
 The model analyses the timbre, pitch, and prosody of the reference audio, then synthesises new speech that preserves those characteristics while speaking your input text.
@@ -26,67 +27,86 @@ The model analyses the timbre, pitch, and prosody of the reference audio, then s
 
 ### Google Colab (Recommended)
 
-The fastest way to try it — zero setup required.
+The fastest way to try it — zero setup required. First run takes ~3-5 minutes (model download). Subsequent runs are faster.
 
 1. Click **Open in Colab** above
-2. Run all cells
-3. Choose your model and enter the text you want the cloned voice to say
-4. Upload a reference audio file when prompted
-5. Download your cloned voice
+2. Go to **Runtime → Change runtime type** and select **T4 GPU** (if not already selected)
+3. Run all cells: **Runtime → Run all** (or press `Ctrl+Shift+F9`)
+4. Choose your model and enter the text you want the cloned voice to say
+5. Upload a reference audio file when prompted
+6. Wait for the voice clone to generate — it will play and download automatically
 
+### Running Locally
+
+```bash
+git clone https://github.com/wsamuelw/qwen3-tts-voice-clone.git
+cd qwen3-tts-voice-clone
+pip install -r requirements.txt
+# Open the notebook in Jupyter:
+jupyter notebook qwen3-tts-voice-clone.ipynb
+```
+
+**Requirements:** Python 3.10+, NVIDIA GPU with 8GB+ VRAM (CUDA)
+
+## Reference Audio Tips
+
+For best results, your reference audio should be:
+
+- **3–10 seconds** of clear, single-speaker speech
+- **No background music**, noise, or reverb
+- **Single speaker** — multiple speakers will confuse the model
+- **Normal pace** — not too fast, not too slow
+- **Clear pronunciation** — mumbling or whispering degrades quality
 
 ## Use Cases
 
-### Accessibility & Assistive Tech
-Restore speech for people who have lost their voice. A short recording before voice loss enables continued communication in their own voice.
-
-### Content Creation
-Dub videos, podcasts, and audiobooks without hiring voice actors. Maintain a consistent brand voice across all content.
-
-### Education
-Generate language learning materials with natural pronunciation. Create multilingual versions of the same lesson from a single recording.
-
-### Entertainment & Gaming
-Bring characters to life with consistent, expressive voices. Localise games into multiple languages while preserving character identity.
-
-### Archival & Preservation
-Preserve endangered languages and historical voices. Generate new educational content from archived recordings.
-
-## Impact
-
-Voice cloning technology sits at the intersection of convenience and responsibility. This project demonstrates what's possible with open, reproducible research — and why thoughtful deployment matters.
-
-**What this enables:**
-- Creators without big budgets can produce professional voice content
-- Language preservation projects can scale without native speakers present for every recording
-- Accessibility tools become more natural and personalised
-
-**What to consider:**
-- Always obtain consent before cloning someone's voice
-- Clearly label AI-generated audio in published content
-- Be aware of legal frameworks around synthetic media in your jurisdiction
+- **Content creation** — dub videos, podcasts, and audiobooks with a consistent voice
+- **Education** — generate language learning materials with natural pronunciation
+- **Entertainment** — character voice consistency across games and animations
+- **Accessibility** — restore speech for people who have lost their voice (requires prior recording)
+- **Archival** — preserve endangered languages and historical voices
 
 ## Model Details
 
 | Component | Details |
 |-----------|---------|
-| Model | `Qwen/Qwen3-TTS-12Hz-1.7B-Base` |
-| Parameters | 1.7B |
+| TTS Model | `Qwen/Qwen3-TTS-12Hz-1.7B-Base` |
+| ASR Model | `Qwen/Qwen3-ASR-0.6B` |
+| Parameters | 1.7B (TTS), 0.6B (ASR) |
 | Sample Rate | 24kHz |
+| Output Format | WAV |
 | Languages | Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, Italian |
 | Reference Audio | 3–10 seconds recommended |
-| GPU Memory | ~4GB (bf16) |
+| GPU Memory | ~4GB for model weights (bf16); 8-10GB recommended for inference |
 
-Smaller variant also available: `Qwen/Qwen3-TTS-12Hz-0.6B-Base` (fewer parameters, faster inference).
+Smaller TTS variant also available: `Qwen/Qwen3-TTS-12Hz-0.6B-Base` (faster inference, lower VRAM).
+
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| "No GPU detected" | Go to Runtime → Change runtime type → T4 GPU |
+| Voice cloning fails or OOM | Switch to the 0.6B model in the form widget |
+| Audio sounds like a different person | Ensure `ref_text` matches the reference audio exactly (ASR handles this automatically) |
+| Audio is garbled or robotic | Upload a cleaner reference audio (3-10s, no background noise) |
+| "ASR returned empty transcription" | Upload a file with audible speech, not silence |
 
 ## Project Structure
 
 ```
 qwen3-tts-voice-clone/
 ├── qwen3-tts-voice-clone.ipynb   # Full working notebook (recommended starting point)
+├── requirements.txt              # Python dependencies
 ├── README.md
 └── .gitignore
 ```
+
+## Resources
+
+- [Qwen3-TTS Model Card](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base) — model details, benchmarks, usage policies
+- [Qwen3-ASR Model Card](https://huggingface.co/Qwen/Qwen3-ASR-0.6B) — ASR model details
+- [qwen-tts PyPI](https://pypi.org/project/qwen-tts/) — Python package
+- [qwen-asr PyPI](https://pypi.org/project/qwen-asr/) — Python package
 
 ## Contributing
 
@@ -94,4 +114,13 @@ Contributions welcome. Open an issue to discuss what you'd like to change, or su
 
 ## License
 
-MIT
+This project is licensed under [MIT](LICENSE). The underlying Qwen3-TTS model is licensed under [Apache 2.0](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base).
+
+## Ethical Use
+
+This tool is intended for legitimate use cases such as content creation, accessibility, and education.
+
+- **Do not** use this for impersonation, fraud, or deception
+- **Always** obtain consent before cloning someone's voice
+- **Clearly** label AI-generated audio in published content
+- **Be aware** of legal frameworks around synthetic media in your jurisdiction
