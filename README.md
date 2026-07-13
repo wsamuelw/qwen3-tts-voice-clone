@@ -4,16 +4,6 @@ Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wsamuelw/qwen3-tts-voice-clone/blob/main/qwen3-tts-voice-clone.ipynb)
 
-**What the notebook does:**
-
-1. Install dependencies (qwen-tts, qwen-asr, and their requirements)
-2. Configure settings — choose your TTS model and enter the text you want the cloned voice to say
-3. Upload a reference audio file (the voice you want to clone)
-4. Auto-transcribe the reference audio using Qwen3-ASR (so the model knows what words are spoken)
-5. Load the Qwen3-TTS model
-6. Generate the cloned voice
-7. Save, play, and download the output
-
 ## Use Cases
 
 - **Content creation** — dub videos, podcasts, and audiobooks with a consistent voice
