@@ -18,8 +18,8 @@ Voice cloning powered by [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-
 ## Features
 
 - **Zero-shot voice cloning** — no fine-tuning required. A single 3-second reference audio is enough
-- **Auto-transcription** — uses [Qwen3-ASR](https://huggingface.co/Qwen/Qwen3-ASR-0.6B) to transcribe the reference audio automatically, ensuring accurate speaker embedding alignment
-- **Multilingual** — the model supports 10 languages: Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, and Italian. The notebook auto-detects Chinese or English from your input text
+- **Auto-transcription** — uses [Qwen3-ASR](https://huggingface.co/Qwen/Qwen3-ASR-0.6B) to transcribe the reference audio automatically, with a chance to confirm or edit before generation
+- **Multilingual** — supports 10 languages: Chinese, English, Japanese, Korean, German, French, Russian, Portuguese, Spanish, and Italian. Select from a dropdown or let the notebook auto-detect Chinese/English
 - **Low resource** — runs on a single T4 GPU in Google Colab (free tier)
 - **Fast inference** — typically under 5 seconds for short text on T4
 - **WAV output** — 24kHz sample rate
@@ -43,7 +43,7 @@ The fastest way to try it — zero setup required. First run takes ~3-5 minutes 
 1. Click **Open in Colab** above
 2. Go to **Runtime → Change runtime type** and select **T4 GPU** (if not already selected)
 3. Run all cells: **Runtime → Run all** (or press `Ctrl+Shift+F9`)
-4. Choose your model and enter the text you want the cloned voice to say
+4. Choose your model, enter the text, and select a language (or leave as Auto)
 5. Upload a reference audio file when prompted
 6. Wait for the voice clone to generate — it will play and download automatically
 
@@ -90,7 +90,7 @@ Smaller TTS variant also available: `Qwen/Qwen3-TTS-12Hz-0.6B-Base` (faster infe
 |---------|----------|
 | "No GPU detected" | Go to Runtime → Change runtime type → T4 GPU |
 | Voice cloning fails or OOM | Switch to the 0.6B model in the form widget |
-| Audio sounds like a different person | Ensure `ref_text` matches the reference audio exactly (ASR handles this automatically) |
+| Audio sounds like a different person | Check the transcription shown after upload — edit it if the ASR got any words wrong |
 | Audio is garbled or robotic | Upload a cleaner reference audio (3-10s, no background noise) |
 | "ASR returned empty transcription" | Upload a file with audible speech, not silence |
 
