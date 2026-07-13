@@ -101,6 +101,7 @@ qwen3-tts-voice-clone/
 ├── qwen3-tts-voice-clone.ipynb   # Full working notebook (recommended starting point)
 ├── requirements.txt              # Python dependencies
 ├── README.md
+├── LICENSE
 └── .gitignore
 ```
 
