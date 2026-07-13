@@ -1,2 +1,5 @@
 qwen-tts
 qwen-asr
+librosa
+soundfile
+numpy
